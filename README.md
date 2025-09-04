@@ -14,15 +14,15 @@ A full-stack web app to manage team documents with *AI-powered summarization, ta
 
 ---
 
-##📂 Project Structure
+## 📂 Project Structure
 - client/ → React frontend  
 - server/ → Node.js + Express backend  
 
 ---
 
-#⚙ Setup
+## ⚙ Setup
 
-### 1. Clone the repo
+## 1. Clone the repo
 ```bash
 git clone https://github.com/your-username/team-knowledge-base.git
 cd team-knowledge-base
