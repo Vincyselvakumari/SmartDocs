@@ -1,0 +1,69 @@
+.qa-container {
+  margin-top: 40px;  
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+background: transparent;
+    border: 1px solid #8aa7cf;
+}
+
+.qa-container h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #2a5b7c;
+}
+
+.qa-input {
+  display: flex;
+  gap: 10px;
+   
+}
+
+.qa-input input {
+   
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #dce0e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #b4c6e0;
+}
+
+.qa-input button {
+  background: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qa-input button:hover {
+  background: #1e40af;
+}
+
+.qa-answer {
+  margin-top: 20px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.qa-answer h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: #111;
+}
+
+.qa-source {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+  background: #f3f4f6;
+  padding: 6px 10px;
+  border-radius: 6px;
+}

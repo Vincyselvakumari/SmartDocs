@@ -1,0 +1,60 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f0f2f5;
+  background-image: url('src/assets/bg2.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  font-weight: 700;
+  padding: 20px;
+}
+
+/* content box with slight glass effect */
+.contents {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.contents h1 {
+  font-size: 42px;
+  color: #2c4a6f;
+  margin-bottom: 20px;
+}
+
+.contents p {
+  font-size: 18px;
+  color: #5a6f7a;
+  margin-bottom: 30px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.btn-start {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 28px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #2fa6ac, #1099b5);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 6px 12px rgba(19, 19, 242, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-start:hover {
+  background: linear-gradient(135deg, #1099b5, #0d7a94);
+  transform: scale(1.05);
+}
