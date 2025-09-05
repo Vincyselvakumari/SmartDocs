@@ -5,6 +5,7 @@ import {
   summarizeAndTag,
   getEmbedding,
   semanticSearch,
+  askQuestion,
 } from "../services/gemini.js";
 
 const router = express.Router();
@@ -147,7 +148,52 @@ router.post("/search", requireAuth, async (req, res) => {
     console.error("Search error:", err);
     res.status(500).json({ error: "Server error: " + err.message });
   }
+  });
+router.post("/qa", requireAuth, async (req, res) => {
+  try {
+    const { question } = req.body;
+    if (!question) {
+      return res.status(400).json({ error: "Question is required" });
+    }
+
+    const queryEmbedding = await getEmbedding(question);
+    const docs = await Document.find();
+    const topDocs = semanticSearch(queryEmbedding, docs);
+
+    if (!topDocs.length) {
+      return res.json({ answer: "I couldn't find anything in the documents.", source: null });
+    }
+
+    const context = topDocs
+      .map((d) => `Title: ${d.title}\nSummary: ${d.summary}\nContent: ${d.content}`)
+      .join("\n\n");
+
+    const { GoogleGenerativeAI } = await import("@google/generative-ai");
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const textModel = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const prompt = `
+You are a helpful assistant for a software dev team.
+Answer the question using only the following documents:
+
+${context}
+
+Question: ${question}
+Answer:`;
+
+    const result = await textModel.generateContent(prompt);
+    const answerText = result.response.text();
+
+    res.json({
+      answer: answerText,
+      source: { title: topDocs[0].title, id: topDocs[0]._id },
+    });
+  } catch (err) {
+    console.error("Q/A error:", err);
+    res.status(500).json({ error: "Something went wrong: " + err.message });
+  }
 });
+
 
 
 export default router;
